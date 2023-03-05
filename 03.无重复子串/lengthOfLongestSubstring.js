@@ -1,3 +1,9 @@
+/* 
+输入: s = "abcabcbb"
+输出: 3 
+解释: 因为无重复字符的最长子串是 "abc"，所以其长度为 3。
+*/
+
 var lengthOfLongestSubstring = function(str) {
   const arr = [] // 用来存最长子串
   let max = 0 //最长子串长度
