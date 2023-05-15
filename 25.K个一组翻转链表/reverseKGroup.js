@@ -4,7 +4,7 @@
  * @param {*} k     翻转K个元素
  * @return {*}
  */
-function stack(head, k) {
+function reverseKGroup(head, k) {
   /**
    * 该方案利用栈先进后出的特点，每次遍历链表的k个元素入栈，然后将元素依次出栈添加到新的
    * 链表中，直到遍历完成链表所有元素或剩余元素不足k个。剩余元素不足k个则直接将剩余元素
@@ -36,6 +36,7 @@ function stack(head, k) {
           node.next = stackArray[i];
           node = node.next;
       }
+      head = cuNode
   }
   // 当链表元素刚好为k个元素，第一个元素变为最后一个
   // 元素后其next指向的是第二个元素，将其重置为null
