@@ -30,10 +30,23 @@ var mergeTwoLists = function (l1, l2) {
     return l1;
   }
   if (l1.val < l2.val) {
+    console.log('l1,', JSON.stringify(l1))
+    console.log('l2,', JSON.stringify(l2))
     l1.next = mergeTwoLists(l1.next, l2);
+    console.log('l11,', JSON.stringify(l1))
+    console.log('l12,', JSON.stringify(l2))
     return l1;
   } else {
+    console.log('l13', JSON.stringify(l1))
+    console.log('l23', JSON.stringify(l2))
     l2.next = mergeTwoLists(l1, l2.next);
+    console.log('l14', JSON.stringify(l1))
+    console.log('l24', JSON.stringify(l2))
     return l2;
   }
 };
+
+const list1 = {val: 2, next: {val: 4, next: { val: 6, next: null }}}
+const list2 = {val: 5, next: {val: 8, next: { val: 12, next: null }}}
+
+console.log(JSON.stringify(mergeTwoLists(list1, list2)))

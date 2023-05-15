@@ -32,23 +32,39 @@ function mergeList(lists, start, end) {
   const mid = start + ((end - start) >> 1); // 找到中点，然后下面继续进行递归分割成左右两部分
   const leftList = mergeList(lists, start, mid);
   const rightList = mergeList(lists, mid + 1, end);
-  return merge(leftList, rightList); // 进行合并
+  return mergeTwoLists(leftList, rightList); // 进行合并
 }
 
-// 这里就是基本算法，合并两个有序链表
-function merge(head1, head2) {
-  let newHead = new ListNode(0), p = newHead;
-  while(head1 && head2) {
-      if(head1.val <= head2.val) {
-          p.next = head1;
-          head1 = head1.next;
-      } else {
-          p.next = head2;
-          head2 = head2.next;
-      }
-      p = p.next;
+var mergeTwoLists = function (l1, l2) {
+  if (l1 === null) {
+    return l2;
   }
-  // 没遍历完的接上即可
-  p.next = head1 ? head1 : head2;
-  return newHead.next;
-}
+  if (l2 === null) {
+    return l1;
+  }
+  if (l1.val < l2.val) {
+    l1.next = mergeTwoLists(l1.next, l2);
+    return l1;
+  } else {
+    l2.next = mergeTwoLists(l1, l2.next);
+    return l2;
+  }
+};
+
+// 这里就是基本算法，合并两个有序链表
+// function merge(head1, head2) {
+//   let newHead = new ListNode(0), p = newHead;
+//   while(head1 && head2) {
+//       if(head1.val <= head2.val) {
+//           p.next = head1;
+//           head1 = head1.next;
+//       } else {
+//           p.next = head2;
+//           head2 = head2.next;
+//       }
+//       p = p.next;
+//   }
+//   // 没遍历完的接上即可
+//   p.next = head1 ? head1 : head2;
+//   return newHead.next;
+// }
